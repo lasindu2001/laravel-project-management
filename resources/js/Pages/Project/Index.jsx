@@ -1,4 +1,5 @@
 import Pagination from '@/Components/Pagination'
+import { PROJECT_STATUS_CLASS_MAP, PROJECT_STATUS_TEXT_MAP } from '@/constants'
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout'
 import { Head, Link } from '@inertiajs/react'
 
@@ -55,8 +56,13 @@ export default function Index({ auth, projects }) {
                                                     </Link>
                                                 </th>
                                                 <td className="px-3 py-2">
-                                                    <span className="px-2 py-1 rounded text-white">
-                                                        {project.status}
+                                                    <span
+                                                        className={
+                                                            "px-2 py-1 rounded text-white " +
+                                                            PROJECT_STATUS_CLASS_MAP[project.status]
+                                                        }
+                                                    >
+                                                        {PROJECT_STATUS_TEXT_MAP[project.status]}
                                                     </span>
                                                 </td>
                                                 <td className="px-3 py-2 text-nowrap">
