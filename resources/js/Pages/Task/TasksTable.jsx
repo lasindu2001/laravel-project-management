@@ -56,8 +56,8 @@ export default function TasksTable({
                             </TableHeading>
                             <th className="px-3 py-3">Image</th>
                             {!hideProjectColumn && (
-                <th className="px-3 py-3">Project Name</th>
-              )}
+                                <th className="px-3 py-3">Project Name</th>
+                            )}
                             <TableHeading
                                 name="name"
                                 sort_field={queryParams.sort_field}
@@ -137,8 +137,8 @@ export default function TasksTable({
                                     <img src={task.image_path} style={{ width: 60 }} />
                                 </td>
                                 {!hideProjectColumn && (
-                  <td className="px-3 py-2">{task.project.name}</td>
-                )}
+                                    <td className="px-3 py-2">{task.project.name}</td>
+                                )}
                                 <th className="px-3 py-2 text-gray-100 hover:underline">
                                     <Link href={route("task.show", task.id)}>{task.name}</Link>
                                 </th>
