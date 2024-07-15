@@ -84,7 +84,9 @@ class TaskController extends Controller
      */
     public function show(Task $task)
     {
-        //
+        return inertia('Task/Show', [
+            'task' => new TaskResource($task),
+        ]);
     }
 
     /**
@@ -120,8 +122,7 @@ class TaskController extends Controller
 
         $task->update($data);
 
-        return to_route('task.index')
-            ->with('success', "Task \"$task->name\" was updated");
+        return to_route('task.index')->with('success', "Task \"$task->name\" was updated");
     }
 
     /**
@@ -136,7 +137,6 @@ class TaskController extends Controller
             Storage::disk('public')->deleteDirectory(dirname($task->image_path));
         }
         
-        return to_route('task.index')
-            ->with('success', "Task \"$name\" was deleted");
+        return to_route('task.index')->with('success', "Task \"$name\" was deleted");
     }
 }
