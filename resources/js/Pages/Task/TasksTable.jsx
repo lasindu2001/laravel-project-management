@@ -41,6 +41,13 @@ export default function TasksTable({
         router.get(route("task.index"), queryParams);
     };
 
+    const deleteTask = (task) => {
+        if (!window.confirm("Are you sure you want to delete the task?")) {
+            return;
+        }
+        router.delete(route("task.destroy", task.id));
+    };
+
     return (
         <>
             {success && (
@@ -169,6 +176,7 @@ export default function TasksTable({
                                         Edit
                                     </Link>
                                     <button
+                                        onClick={(e) => deleteTask(task)}
                                         className="font-medium text-red-600 dark:text-red-500 hover:underline mx-1"
                                     >
                                         Delete

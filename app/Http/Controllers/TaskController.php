@@ -117,7 +117,7 @@ class TaskController extends Controller
             }
             $data['image_path'] = $image->store('task/' . Str::random(), 'public');
         }
-        
+
         $task->update($data);
 
         return to_route('task.index')
@@ -129,6 +129,14 @@ class TaskController extends Controller
      */
     public function destroy(Task $task)
     {
-        //
+        $name = $task->name;
+        $task->delete();
+
+        if ($task->image_path) {
+            Storage::disk('public')->deleteDirectory(dirname($task->image_path));
+        }
+        
+        return to_route('task.index')
+            ->with('success', "Task \"$name\" was deleted");
     }
 }

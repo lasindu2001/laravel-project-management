@@ -3,7 +3,7 @@ import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout'
 import { Head, Link } from '@inertiajs/react'
 import TasksTable from '../Task/TasksTable'
 
-export default function Show({ auth, project, tasks, queryParams }) {
+export default function Show({ auth, success, project, tasks, queryParams }) {
     return (
         <AuthenticatedLayout
             user={auth.user}
@@ -95,6 +95,7 @@ export default function Show({ auth, project, tasks, queryParams }) {
                                 tasks={tasks}
                                 queryParams={queryParams}
                                 hideProjectColumn={true}
+                                success={success}
                             />
                         </div>
                     </div>
